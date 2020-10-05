@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Of Programming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/human.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form class="form-addStudent">
+            <div class="form-item">
+                <label for="name">Name: </label>
+                <input type="text" name="name" placeholder="Exp: William">
+            </div>
+    
+            <div class="form-item">
+                <label for="surname">Surname: </label>
+                <input type="text" name="surname" placeholder="Exp: Blake"> 
+            </div>
+    
+            <div class="form-item">
+                <label for="age">Age: </label>
+                <input type="number" min="18" max="60" maxlength="2" name="age" placeholder="Exp: 24">
+            </div>
+    
+            <div class="form-item">
+                <label for="specialization">Specialization: </label>
+                <input type="text" name="specialization" placeholder="Exp: Programmer">
+            </div>
+
+            <div class="form-item">
+                <label for="mark">Marks: </label>
+                <input type="number" min="1" max="10" maxlength="2" name="mark" placeholder="1 - 10">
+                <input type="number" min="1" max="10" maxlength="2" name="mark" placeholder="1 - 10">
+                <input type="number" min="1" max="10" maxlength="2" name="mark" placeholder="1 - 10">
+                <input type="number" min="1" max="10" maxlength="2" name="mark" placeholder="1 - 10">
+                <input type="number" min="1" max="10" maxlength="2" name="mark" placeholder="1 - 10">
+            </div>
+    
+            <div class="form-button">
+                <input type="button" value="Add Studnet">
+            </div>
+        </form>
+    
+        <div>
+            <ol class="listOfStudents"></ol>
+            <button id="update">Update</button>
+        </div>
+    </div>
+</body>
+</html>

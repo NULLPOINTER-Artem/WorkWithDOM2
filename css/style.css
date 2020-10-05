@@ -1,0 +1,42 @@
+body {
+    background-color: whitesmoke;
+}
+
+.container {
+    display: flex;
+}
+
+#update {
+    margin-left: 45%;
+    background-color: black;
+    color: blanchedalmond;
+    border: thin;
+}
+
+.container .form-addStudent .form-item {
+    margin: 8px 0;
+}
+
+.container .form-addStudent .form-item input {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid wheat;
+    background-color: whitesmoke;
+    opacity: 0.6;
+}
+
+.container .form-addStudent .form-button input {
+    background-color: black;
+    color: blanchedalmond;
+    border: thin;
+}
+
+.container .form-addStudent .form-item label {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.listOfStudents li {
+    margin: 8px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
