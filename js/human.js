@@ -13,25 +13,30 @@ function init() {
 
     let form = document.querySelector('.form-addStudent');
     let listOfStudents = document.querySelector('.listOfStudents');
-    let arr = Array.from(form.elements);
+    let arrOfInputs = Array.from(form.elements);
 
     buttonAddStudent.onclick = function () {
-        let marks = arr.reduce((prevVal, currVal) => currVal.name === "mark" ?
-            prevVal += currVal.value + ' ' : prevVal += '', '');
-        let inputs = arr.filter( (item) => item.type === 'text' || item.type === 'number' && item.name === 'age')
-            .map((item) => item.value);
+        if(!validateInputValue(arrOfInputs) || !validateMark(arrOfInputs)) {
+            console.log('Input norm!');
+        } else {
+            let marks = arrOfInputs.reduce((prevVal, currVal) => currVal.name === "mark" ?
+                prevVal += currVal.value + ' ' : prevVal += '', '');
 
-        marks = marks.trim().split(' ').map((item) => Number.parseInt(item));
+            let inputs = arrOfInputs.filter((item) => item.type === 'text' || item.type === 'number' && item.name === 'age')
+                .map((item) => item.value);
 
-        [name, surname, age, specialization] = inputs;
+            marks = marks.trim().split(' ').map((item) => Number.parseInt(item));
 
-        teacher.group.push(new Student({
-            name,
-            surname,
-            age: Number.parseInt(age),
-            mark: marks,
-            specialization,
-        }));
+            [name, surname, age, specialization] = inputs;
+
+            teacher.group.push(new Student({
+                name,
+                surname,
+                age: Number.parseInt(age),
+                mark: marks,
+                specialization,
+            }));
+        }
     }
 
     buttonUpdate.onclick = function () {
@@ -44,6 +49,35 @@ function init() {
     }
 }
 
+function validateInputValue(elements) {
+    let valid = true;
+    let validTypes = ['text', 'number'];
+
+    for (const elem of elements) {
+        if(validTypes.includes(elem.type)) {
+            if (!elem.value.length) {
+                valid = false;
+            }
+        }
+    }
+
+    return valid;
+}
+
+function validateMark(elements) {
+    let valid = true;
+    
+    console.log(elements);
+    for (const elem of elements) {
+        if(elem.type === 'number' && elem.name === 'mark') {
+            if (Number.parseInt(elem.value) < 1 || Number.parseInt(elem.value) > 10 || !elem.value.length) {
+                valid = false;
+            }
+        }
+    }
+
+    return valid;
+}
 
 class Human {
     constructor({name, surname, age}) {
