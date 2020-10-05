@@ -62,10 +62,10 @@ function init() {
 
 function validateInputValue(elements) {
     let valid = true;
-    let validTypes = ['text', 'number'];
+    let validTypes = ['text'];
 
     for (const elem of elements) {
-        if(validTypes.includes(elem.type)) {
+        if(validTypes.includes(elem.type) || elem.name === 'age') {
             if (!elem.value.length) {
                 valid = false;
 
@@ -88,7 +88,13 @@ function validateMark(elements) {
         if(elem.type === 'number' && elem.name === 'mark') {
             if (Number.parseInt(elem.value) < 1 || Number.parseInt(elem.value) > 10 || !elem.value.length) {
                 valid = false;
-            }
+
+                elem.classList.add('error');
+                elem.classList.remove('success');
+            } else {
+                elem.classList.add('success');
+                elem.classList.remove('error');
+            } 
         }
     }
 
