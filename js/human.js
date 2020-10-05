@@ -18,19 +18,12 @@ function init() {
     buttonAddStudent.onclick = function () {
         let marks = arr.reduce((prevVal, currVal) => currVal.name === "mark" ?
             prevVal += currVal.value + ' ' : prevVal += '', '');
-        let inputs = arr.filter( (item) => item.type === 'text' || item.type === 'number')
+        let inputs = arr.filter( (item) => item.type === 'text' || item.type === 'number' && item.name === 'age')
             .map((item) => item.value);
 
-        // marks = marks.trim();
         marks = marks.trim().split(' ').map((item) => Number.parseInt(item));
-        console.log(marks);
-        console.log("-------------");
-        console.log(inputs);
-        // marks = marks.split(' ').map((item) => Number.parseInt(item));
 
         [name, surname, age, specialization] = inputs;
-
-        console.log(name, surname, age, specialization);
 
         teacher.group.push(new Student({
             name,
