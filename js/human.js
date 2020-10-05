@@ -15,15 +15,26 @@ function init() {
     let listOfStudents = document.querySelector('.listOfStudents');
     let arrOfInputs = Array.from(form.elements);
 
+    let errorSpan = document.createElement('span');
+        errorSpan.textContent = 'Fill the form!';
+        errorSpan.style.display = 'none';
+        
+    buttonAddStudent.before(errorSpan);
+
     buttonAddStudent.onclick = function () {
         if(!validateInputValue(arrOfInputs) || !validateMark(arrOfInputs)) {
-            console.log('Input norm!');
+            errorSpan.classList.add('msg-error');
+            errorSpan.style.display = 'block';
         } else {
+            errorSpan.classList.remove('msg-error');
+            errorSpan.style.display = 'none';
+
             let marks = arrOfInputs.reduce((prevVal, currVal) => currVal.name === "mark" ?
                 prevVal += currVal.value + ' ' : prevVal += '', '');
 
-            let inputs = arrOfInputs.filter((item) => item.type === 'text' || item.type === 'number' && item.name === 'age')
-                .map((item) => item.value);
+            let inputs = arrOfInputs.filter((item) => item.type === 'text' 
+                    || item.type === 'number' && item.name === 'age')
+                    .map((item) => item.value);
 
             marks = marks.trim().split(' ').map((item) => Number.parseInt(item));
 
@@ -57,6 +68,12 @@ function validateInputValue(elements) {
         if(validTypes.includes(elem.type)) {
             if (!elem.value.length) {
                 valid = false;
+
+                elem.classList.add('error');
+                elem.classList.remove('success');
+            } else {
+                elem.classList.add('success');
+                elem.classList.remove('error');
             }
         }
     }
@@ -67,7 +84,6 @@ function validateInputValue(elements) {
 function validateMark(elements) {
     let valid = true;
     
-    console.log(elements);
     for (const elem of elements) {
         if(elem.type === 'number' && elem.name === 'mark') {
             if (Number.parseInt(elem.value) < 1 || Number.parseInt(elem.value) > 10 || !elem.value.length) {

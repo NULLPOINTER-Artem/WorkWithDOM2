@@ -17,7 +17,7 @@ body {
     margin: 8px 0;
 }
 
-.container .form-addStudent .form-item input {
+input[type="text"], input[type="number"] {
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -26,7 +26,7 @@ body {
     opacity: 0.6;
 }
 
-.container .form-addStudent .form-button input {
+input[type="button"] {
     background-color: black;
     color: blanchedalmond;
     border: thin;
@@ -39,4 +39,34 @@ body {
 .listOfStudents li {
     margin: 8px 0;
     font-family: 'Courier New', Courier, monospace;
+}
+
+input.error {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid palevioletred;
+    background-color: whitesmoke;
+    opacity: 0.6;
+}
+
+input.success {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid greenyellow;
+    background-color: whitesmoke;
+    opacity: 0.6;
+}
+
+.msg-error {
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 8px;
+    margin: 10px 0;
 }
